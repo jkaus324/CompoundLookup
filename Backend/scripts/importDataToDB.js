@@ -2,8 +2,8 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-const { Compound } = require('../models'); // Adjust the path if needed
-const db = require('../models'); // Import the database connection
+const { Compound } = require('../models'); 
+const db = require('../models'); 
 
 async function importCsvData(filePath) {
   try {
@@ -17,11 +17,11 @@ async function importCsvData(filePath) {
         // Map CSV columns to your model fields
         results.push({
           id: parseInt(row.id, 10),
-          name: row.compoundname,                   // Assuming `name` maps to `compoundname`
-          description: row.compounddescription,     // Assuming `description` maps to `compounddescription`
-          imageSource: row.strImageSource,          // Adjust if your model has a similar field
-          imageAttribution: row.strImageAttribution,// Adjust if your model has a similar field
-          dateModified: row.datemodified            // Adjust if your model has a similar field
+          name: row.compoundname,                   
+          description: row.compounddescription,    
+          imageSource: row.strImageSource,          
+          imageAttribution: row.strImageAttribution,
+          dateModified: row.datemodified            
         });
       })
       .on('end', async () => {
@@ -38,8 +38,6 @@ async function importCsvData(filePath) {
     console.error('Database connection error:', error);
   }
 }
-
-// Specify the path to your CSV file
 const csvFilePath = path.join(__dirname, 'compound.csv'); // Place 'compound.csv' in the scripts folder or adjust the path
 
 importCsvData(csvFilePath);

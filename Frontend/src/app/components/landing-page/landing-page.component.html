@@ -1,11 +1,14 @@
 <div class="landing-page-container">
-    <div class="landing-card">
-        <h1>Welcome to Compound Lookup</h1>
+    <mat-card class="landing-card">
+      <mat-card-title>Welcome to Compound Lookup</mat-card-title>
+      <mat-card-content>
         <p>Discover detailed information about various chemical compounds at your fingertips.</p>
-        <div class="landing-card-actions">
-            <a href="/compounds" class="view-compounds-button">
-                <span class="icon">🔍</span> View Compounds
-            </a>
-        </div>
-    </div>
-</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button color="primary" routerLink="/compounds" class="view-compounds-button">
+          <mat-icon>search</mat-icon> View Compounds
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
