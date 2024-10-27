@@ -1,33 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-interface Compound {
-  id: number;
-  name: string;
-  image: string;
-}
 
 @Component({
   selector: 'app-compound-list',
-  standalone: true,
-  imports: [],
   templateUrl: './compound-list.component.html',
-  styleUrl: './compound-list.component.css'
+  styleUrls: ['./compound-list.component.css']
 })
 export class CompoundListComponent implements OnInit {
-  compounds: Compound[] = [
-    { id: 1, name: 'Water (H₂O)', image: 'assets/images/water.jpg' },
-    { id: 2, name: 'Carbon Dioxide (CO₂)', image: 'assets/images/carbon_dioxide.jpg' },
-    { id: 3, name: 'Sodium Chloride (NaCl)', image: 'assets/images/sodium_chloride.jpg' },
-    { id: 4, name: 'Methane (CH₄)', image: 'assets/images/methane.jpg' },
-    { id: 5, name: 'Ammonia (NH₃)', image: 'assets/images/ammonia.jpg' },
-    { id: 6, name: 'Glucose (C₆H₁₂O₆)', image: 'assets/images/glucose.jpg' },
-    { id: 7, name: 'Sulfuric Acid (H₂SO₄)', image: 'assets/images/sulfuric_acid.jpg' },
-    { id: 8, name: 'Ethanol (C₂H₅OH)', image: 'assets/images/ethanol.jpg' },
-    { id: 9, name: 'Calcium Carbonate (CaCO₃)', image: 'assets/images/calcium_carbonate.jpg' },
-    { id: 10, name: 'Hydrochloric Acid (HCl)', image: 'assets/images/hydrochloric_acid.jpg' },
+  compounds = [
+    { id: 1, name: 'Water', description: 'H2O - Essential for life', imageSource: 'path/to/image1.jpg' },
+    { id: 2, name: 'Salt', description: 'NaCl - Common salt', imageSource: 'path/to/image2.jpg' },
+    { id: 3, name: 'Sugar', description: 'C12H22O11 - Sweetener', imageSource: 'path/to/image3.jpg' },
+    { id: 4, name: 'Baking Soda', description: 'NaHCO3 - Used in baking', imageSource: 'path/to/image4.jpg' },
+    { id: 5, name: 'Vinegar', description: 'CH3COOH - Acetic acid', imageSource: 'path/to/image5.jpg' },
+    { id: 6, name: 'Ammonia', description: 'NH3 - Used in cleaning', imageSource: 'path/to/image6.jpg' },
   ];
-  constructor(private router: Router) {}
+  itemsPerPage = 6;
+  totalItems = this.compounds.length;
+  currentPage = 1;
 
   ngOnInit(): void {}
+
+  onPageChange(): void {
+    // No actual pagination logic here since we’re displaying all demo data
+  }
 }
