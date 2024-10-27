@@ -8,6 +8,6 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 
 
 const db = { sequelize, Sequelize };
-db.compound = require('./compound')(sequelize, Sequelize);
+db.Compound_look = require('./Compound')(sequelize, Sequelize);
 
 module.exports = db;

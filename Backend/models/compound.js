@@ -1,40 +1,34 @@
+const sequelize = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-    const Compound = sequelize.define('Compound', {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        field: 'compoundname' // Maps CSV column to model field
-      },
-      description: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-        field: 'compounddescription' // Maps CSV column to model field
-      },
-      imageSource: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        field: 'strImageSource' // Maps CSV column to model field
-      },
-      imageAttribution: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        field: 'strImageAttribution' // Maps CSV column to model field
-      },
-      dateModified: {
-        type: DataTypes.DATE,
-        allowNull: true,
-        field: 'datemodified' // Maps CSV column to model field
-      }
-    }, {
-      tableName: 'Compounds', // Ensure this matches your actual table name
-      timestamps: false // Disable automatic `createdAt` and `updatedAt` fields
+    const Compound_look = sequelize.define("lookup", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        imageSource: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        imageAttribution: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        dateModified: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        } // <-- Missing comma here
+    },{
+        timestamps: false
     });
-  
-    return Compound;
-  };
-  
+    return Compound_look;
+};

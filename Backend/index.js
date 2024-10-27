@@ -12,8 +12,11 @@ app.use(express.json());
 app.use('/api/compounds', compoundRoutes);
 
 // Sync with the database
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}).catch(err => console.log('Error: ', err));
+db.sequelize.sync({ alter: true})
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch(err => console.log('Error: ', err));
+
