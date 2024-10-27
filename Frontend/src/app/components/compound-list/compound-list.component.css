@@ -2,12 +2,11 @@
   padding: 20px;
 }
 
-mat-card {
-  width: 100%;
-  margin: 10px;
+.card-img {
+  height: 300px;
+  object-fit: contain;
 }
 
-mat-card img {
-  height: 200px;
-  object-fit: cover;
+.card-heading {
+  size: 15px;
 }

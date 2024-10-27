@@ -9,7 +9,7 @@ const getAllCompounds = async (req, res) => {
 
         // Fetch compounds with pagination
         const compounds = await Compound_look.findAndCountAll({
-            attributes: ['id', 'name', 'description'], // Specify fields you want
+            attributes: ['id', 'name', 'description','imageSource'], // Specify fields you want
             limit: limit,
             offset: offset
         });

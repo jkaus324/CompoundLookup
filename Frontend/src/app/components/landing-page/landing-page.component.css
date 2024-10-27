@@ -1,18 +1,13 @@
 .landing-page-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  margin-top: 5vh;
 }
 
-.landing-card {
-  width: 400px;
-  text-align: center;
+.card-heading{
+  font-size: 28px;
 }
 
-.view-compounds-button {
+/* .view-compounds-button {
   display: flex;
   align-items: center;
   text-decoration: none;
-}
+} */

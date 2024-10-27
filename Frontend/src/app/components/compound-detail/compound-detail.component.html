@@ -1,1 +1,14 @@
-<p>compound-detail works!</p>
+<div class="container compound-detail" *ngIf="compound">
+    <p class=" text-center display-5 mb-4">Compound Details</p>
+    <div class="row align-items-center">
+        <div class="col-md-6 col-sm-12">
+            <img class="card-img img-fluid text-left" [src]="compound.imageSource" [alt]="compound.name" />
+        </div>
+        <div class="col-md-6 col-sm-12 mt-5 d-flex justify-content-center">
+            <div>
+                <p class="display-6">{{ compound.name }}</p>
+                <p class="card-text w-75">{{ compound.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

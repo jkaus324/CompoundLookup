@@ -1,22 +1,26 @@
-<div class="compound-list">
-  <mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let compound of compounds">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ compound.name }}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="compound.imageSource" alt="{{ compound.name }}">
-        <mat-card-content>
-          <p>{{ compound.description }}</p>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div class="container compound-list">
+  <p class=" text-center display-5 mb-4">Compound List</p>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let compound of compounds">
+      <a class="card h-100 rounded-3 pe-auto text-decoration-none" [href]="'/compounds/' + compound.id">
+        <img class="img-fluid card-img p-5" [src]="compound.imageSource" [alt]="compound.name">
+        <div class="card-body">
+          <h2 class="text-center">{{ compound.name }}</h2>
+          <p class="card-text">{{ compound.description }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
 
-  <mat-paginator
-    [length]="totalItems"
-    [pageSize]="itemsPerPage"
-    [pageSizeOptions]="[6]"
-    (page)="onPageChange()">
-  </mat-paginator>
+  <!-- Pagination -->
+  <nav aria-label="Page navigation" class="mt-4">
+    <div class="d-flex pagination justify-content-center">
+      <button class="page-link pe-auto" [class.disabled]="currentPage === 1" >
+        <span class="" (click)="onPageChange(currentPage - 1)">Previous</span>
+      </button>
+      <button class="page-link pe-auto" [class.disabled]="currentPage === totalPages" >
+        <span class="" (click)="onPageChange(currentPage + 1)">Next</span>
+      </button>
+    </div>
+  </nav>
 </div>

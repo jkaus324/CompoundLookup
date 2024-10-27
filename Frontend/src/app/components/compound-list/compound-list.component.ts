@@ -1,26 +1,49 @@
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface Compound {
+  id: number;
+  name: string;
+  description: string;
+  imageSource: string;
+}
+
 
 @Component({
   selector: 'app-compound-list',
   templateUrl: './compound-list.component.html',
+  schemas: [NO_ERRORS_SCHEMA],
+  standalone: true,
+  imports: [CommonModule],
   styleUrls: ['./compound-list.component.css']
 })
 export class CompoundListComponent implements OnInit {
-  compounds = [
-    { id: 1, name: 'Water', description: 'H2O - Essential for life', imageSource: 'path/to/image1.jpg' },
-    { id: 2, name: 'Salt', description: 'NaCl - Common salt', imageSource: 'path/to/image2.jpg' },
-    { id: 3, name: 'Sugar', description: 'C12H22O11 - Sweetener', imageSource: 'path/to/image3.jpg' },
-    { id: 4, name: 'Baking Soda', description: 'NaHCO3 - Used in baking', imageSource: 'path/to/image4.jpg' },
-    { id: 5, name: 'Vinegar', description: 'CH3COOH - Acetic acid', imageSource: 'path/to/image5.jpg' },
-    { id: 6, name: 'Ammonia', description: 'NH3 - Used in cleaning', imageSource: 'path/to/image6.jpg' },
-  ];
+  compounds: Compound[] = [];
   itemsPerPage = 6;
-  totalItems = this.compounds.length;
+  totalItems = 0;
   currentPage = 1;
+  totalPages = 0;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchCompounds(this.currentPage, this.itemsPerPage);
+  }
 
-  onPageChange(): void {
-    // No actual pagination logic here since we’re displaying all demo data
+  fetchCompounds(page: number, limit: number): void {
+    axios.get(`http://localhost:3307/api/compounds?page=${page}&limit=${limit}`)
+      .then(response => {
+        this.compounds = response.data.data; // Adjust based on your API response structure
+        this.totalItems = response.data.totalItems;
+        this.totalPages = response.data.totalPages
+      })
+      .catch(error => {
+        console.error('Error fetching compounds:', error);
+      });
+  }
+
+  onPageChange(newPage: number): void {
+    this.currentPage = newPage;
+    this.fetchCompounds(this.currentPage, this.itemsPerPage);
   }
 }
