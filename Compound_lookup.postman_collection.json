@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "7a7bba08-6934-45e9-a0b2-a236c4076469",
+		"name": "Compound_lookup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25139469"
+	},
+	"item": [
+		{
+			"name": "Get compound",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3307/api/compounds/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3307",
+					"path": [
+						"api",
+						"compounds",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all compounds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3307/api/compounds?page=1&limit=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3307",
+					"path": [
+						"api",
+						"compounds"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create compound",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3307/api/compounds?name=Hydrogen&description=Element&imageSource=abc&imageAttribution=abc&dateModified=a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3307",
+					"path": [
+						"api",
+						"compounds"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hydrogen"
+						},
+						{
+							"key": "description",
+							"value": "Element"
+						},
+						{
+							"key": "imageSource",
+							"value": "abc"
+						},
+						{
+							"key": "imageAttribution",
+							"value": "abc"
+						},
+						{
+							"key": "dateModified",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3307/api/compounds/2?name=hyfdro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3307",
+					"path": [
+						"api",
+						"compounds",
+						"2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "hyfdro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3307/api/compounds/30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3307",
+					"path": [
+						"api",
+						"compounds",
+						"30"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

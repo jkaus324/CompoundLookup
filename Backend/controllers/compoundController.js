@@ -83,7 +83,7 @@ const updateCompound = async (req, res) => {
 const deleteCompound = async (req, res) => {
     try {
         const { id } = req.params;
-        const compound = await Compound.findByPk(id);
+        const compound = await Compound_look.findByPk(id);
 
         if (!compound) {
             return res.status(404).json({ error: 'Compound not found' });
