@@ -1,13 +1,10 @@
-.landing-page-container {
-  margin-top: 5vh;
-}
-
-.card-heading{
-  font-size: 28px;
-}
-
-/* .view-compounds-button {
+form {
   display: flex;
-  align-items: center;
-  text-decoration: none;
-} */
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+button {
+  margin-top: 10px;
+}

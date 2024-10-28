@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('./models');
+const authRoutes = require('./routes/authRoutes');
 const dotenv = require('dotenv');
 const compoundRoutes = require('./routes/compoundRoutes');
 const cors = require('cors');
@@ -11,6 +12,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use('/api/compounds', compoundRoutes);
+app.use('/api/auth', authRoutes);
 
 // Sync with the database
 db.sequelize.sync({ alter: true})
@@ -20,4 +22,5 @@ db.sequelize.sync({ alter: true})
     });
   })
   .catch(err => console.log('Error: ', err));
+
 

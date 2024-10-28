@@ -9,5 +9,6 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 
 const db = { sequelize, Sequelize };
 db.Compound_look = require('./Compound')(sequelize, Sequelize);
+db.User = require('./User')(sequelize, Sequelize);
 
 module.exports = db;
