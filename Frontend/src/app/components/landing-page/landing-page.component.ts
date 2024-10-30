@@ -19,35 +19,31 @@ export class LandingPageComponent {
     this.authForm = this.fb.group({
       email: ['', [Validators.email]],
       password: ['', Validators.required],
-      username: [''] // Only required for registration
+      username: [''] 
     });
     this.updateValidators();
   }
 
   toggleForm() {
     this.isLogin = !this.isLogin;
-    this.updateValidators();  // Update validators on form toggle
+    this.updateValidators();  
   }
 
   updateValidators() {
-    // Clear existing validators
+  
     this.authForm.get('username')?.clearValidators();
     this.authForm.get('email')?.clearValidators();
     this.authForm.get('password')?.clearValidators();
 
-    // Apply conditional validators
     if (this.isLogin) {
-      // For login, only password and username are required
       this.authForm.get('username')?.setValidators([Validators.required]);
       this.authForm.get('password')?.setValidators([Validators.required]);
     } else {
-      // For registration, all fields are required and email needs to be valid
       this.authForm.get('username')?.setValidators([Validators.required]);
       this.authForm.get('email')?.setValidators([Validators.required, Validators.email]);
       this.authForm.get('password')?.setValidators([Validators.required]);
     }
 
-    // Update the validation state of the form controls
     this.authForm.get('username')?.updateValueAndValidity();
     this.authForm.get('email')?.updateValueAndValidity();
     this.authForm.get('password')?.updateValueAndValidity();

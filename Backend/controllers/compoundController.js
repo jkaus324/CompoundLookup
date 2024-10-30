@@ -56,13 +56,13 @@ const updateCompound = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, description, imageSource, imageAttribution, dateModified } = req.body;
-
+        console.log(name, description, imageSource, imageAttribution, dateModified);
         const compound = await Compound_look.findByPk(id);
 
         if (!compound) {
             return res.status(404).json({ error: 'Compound not found' });
         }
-
+        // console.log(compound);
         // Update only the fields provided in the request body
         compound.name = name ?? compound.name;
         compound.description = description ?? compound.description;
@@ -97,11 +97,26 @@ const deleteCompound = async (req, res) => {
     }
 };
 
+const bulkCreateCompounds = async (req, res) => {
+    try {
+        const compoundsData = req.body; // Expecting `req.body` to be an array of objects
+        const compounds = await Compound_look.bulkCreate(compoundsData, {
+            updateOnDuplicate: ["name", "title", "description", "imageSource", "imageAttribution"]
+        });
+        console.log(compounds);
+        res.status(201).json(compounds);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     getAllCompounds,
     createCompound,
     getCompoundById,
     updateCompound,
-    deleteCompound
+    deleteCompound,
+    bulkCreateCompounds
 };
 

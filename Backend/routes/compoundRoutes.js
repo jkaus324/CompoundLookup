@@ -7,5 +7,6 @@ router.post('/', compoundController.createCompound);
 router.get('/:id', compoundController.getCompoundById);
 router.put('/:id', compoundController.updateCompound);
 router.delete('/:id', compoundController.deleteCompound);
+router.post('/bulkCreate', compoundController.bulkCreateCompounds);
 
 module.exports = router;

@@ -33,7 +33,7 @@ export class CompoundListComponent implements OnInit {
   fetchCompounds(page: number, limit: number): void {
     axios.get(`http://localhost:3307/api/compounds?page=${page}&limit=${limit}`)
       .then(response => {
-        this.compounds = response.data.data; // Adjust based on your API response structure
+        this.compounds = response.data.data; 
         this.totalItems = response.data.totalItems;
         this.totalPages = response.data.totalPages
       })

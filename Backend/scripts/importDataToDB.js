@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-const { Compound } = require('../models'); 
+const { Compound } = require('../models/Compound'); 
 const db = require('../models'); 
 
 async function importCsvData(filePath) {
